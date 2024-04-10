@@ -11,3 +11,11 @@
   box-sizing: border-box;
   font-family: "League Spartan";
 }
+
+#root {
+  min-height: 100vh;
+  background-color: #070724;
+  padding: 0 24px;
+  background-image: url(/images/background-stars.svg);
+  background-size: cover;
+}
