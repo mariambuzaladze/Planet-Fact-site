@@ -1,9 +1,14 @@
 import { MyContext } from "../App";
-import { useContext } from "react";
+import { useContext, Dispatch, SetStateAction } from "react";
 import PlanetName from "./PlanetName";
 
-export default function PlanetList() {
+interface IPlanetListProps {
+  setPlanetClicked: Dispatch<SetStateAction<boolean | number>>;
+}
+
+export default function PlanetList({ setPlanetClicked }: IPlanetListProps) {
   const data = useContext(MyContext).data;
+
   return (
     <div className="flex flex-col mt-7">
       {data?.map((planet) => {
@@ -13,6 +18,7 @@ export default function PlanetList() {
             planetId={planet.id}
             planetImg={planet.images.planetImg}
             planetText={planet.name}
+            setPlanetClicked={setPlanetClicked}
           />
         );
       })}

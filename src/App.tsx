@@ -1,8 +1,9 @@
-import { useState, createContext } from "react";
+import { useState, createContext, Dispatch, SetStateAction } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Data from "./data.json";
 import PlanetList from "./components/PlanetList";
+import PlanetInfo from "./components/PlanetInfo";
 
 interface Planet {
   id: number;
@@ -32,17 +33,23 @@ interface Planet {
 
 export const MyContext = createContext<{
   data: Planet[] | null;
-  setData: React.Dispatch<React.SetStateAction<Planet[] | null>>;
+  setData: Dispatch<SetStateAction<Planet[] | null>>;
 }>({ data: null, setData: () => null });
 
 function App() {
   const [data, setData] = useState<Planet[] | null>(Data);
 
+  const [planetClicked, setPlanetClicked] = useState<boolean | number>(false);
+
   return (
     <>
       <MyContext.Provider value={{ data, setData }}>
-        <Header />
-        <PlanetList />
+        <Header
+          planetClicked={planetClicked}
+          setPlanetClicked={setPlanetClicked}
+        />
+        {/* <PlanetList setPlanetClicked={setPlanetClicked} /> */}
+        <PlanetInfo />
       </MyContext.Provider>
     </>
   );
