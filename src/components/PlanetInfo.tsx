@@ -26,7 +26,7 @@ export default function PlanetInfo() {
 
   return (
     <div className="flex flex-col gap-[36px] md:flex-wrap">
-      <div className="hidden w-full justify-between md:flex">
+      <div className="hidden w-full justify-between md:flex border-b border-white border-opacity-20">
         {getPlanetNames()}
       </div>
 
@@ -48,19 +48,19 @@ export default function PlanetInfo() {
         />
       </div>
 
-      <div className="flex flex-col gap-[80px] items-center">
+      <div className="flex flex-col gap-[80px] items-center lg:flex-row lg:justify-center lg:items-end">
         <img
-          className="w-[111px] h-[111px] md:w-[184px] md:h-[184px] md:mt-[100px] md:order-2"
+          className="w-[111px] h-[111px] md:w-[184px] md:h-[184px] md:mt-[100px] md:order-2 lg:w-[290px] lg:h-[290px]"
           src={data ? data[0].images.planetImg : ""}
           alt="planet Image"
         />
 
-        <div className="flex flex-col items-center gap-[20px] md:w-[50%] md:items-start md:order-3">
-          <h2 className="font-antonio text-4xl font-medium text-white md:text-5xl">
+        <div className="flex flex-col items-center gap-[20px] md:w-[50%] md:items-start md:order-3 lg:w-[30%]">
+          <h2 className="font-antonio text-4xl font-medium text-white md:text-5xl lg:text-7xl">
             {data ? data[0].name : ""}
           </h2>
 
-          <p className="text-xs leading-5 text-white opacity-50 text-center md:text-left">
+          <p className="text-xs leading-5 text-white opacity-50 text-center md:text-left lg:text-lg">
             {data ? data[0].overview.content : ""}
           </p>
 
@@ -77,7 +77,7 @@ export default function PlanetInfo() {
         </div>
       </div>
 
-      <div className="flex flex-col w-full gap-[8px] md:order-5 md:flex-row">
+      <div className="flex flex-col w-full gap-[8px] md:order-5 md:flex-row lg:gap-[80px]">
         <InfoContainer
           infoText="ROTATION TIME"
           infoValue={data ? data[0].rotation : ""}

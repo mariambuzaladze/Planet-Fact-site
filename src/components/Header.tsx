@@ -15,12 +15,12 @@ export default function Header({
   };
 
   return (
-    <header className="flex justify-between items-center w-full border-b border-white border-opacity-20 py-4">
+    <header className="flex justify-between items-center w-full border-b border-white border-opacity-20 py-4 md:border-none md:justify-center">
       <h1 className="font-antonio text-3xl font-semibold tracking-tighter text-white">
         THE PLANETS
       </h1>
       <img
-        className="cursor-pointer"
+        className="cursor-pointer md:hidden"
         src={Hamburger}
         alt="icon hamburger"
         style={planetClicked ? { opacity: 1 } : { opacity: 0.25 }}
