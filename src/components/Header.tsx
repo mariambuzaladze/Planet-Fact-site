@@ -1,5 +1,6 @@
 import Hamburger from "/images/icon-hamburger.svg";
 import { Dispatch, SetStateAction } from "react";
+import { Link } from "react-router-dom";
 
 interface IHeaderProps {
   planetClicked: boolean | number;
@@ -19,13 +20,15 @@ export default function Header({
       <h1 className="font-antonio text-3xl font-semibold tracking-tighter text-white">
         THE PLANETS
       </h1>
-      <img
-        className="cursor-pointer md:hidden"
-        src={Hamburger}
-        alt="icon hamburger"
-        style={planetClicked ? { opacity: 1 } : { opacity: 0.25 }}
-        onClick={handleBurgerClick}
-      />
+      <Link to={"/"}>
+        <img
+          className="cursor-pointer md:hidden"
+          src={Hamburger}
+          alt="icon hamburger"
+          style={planetClicked ? { opacity: 1 } : { opacity: 0.25 }}
+          onClick={handleBurgerClick}
+        />
+      </Link>
     </header>
   );
 }

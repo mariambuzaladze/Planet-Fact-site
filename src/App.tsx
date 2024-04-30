@@ -1,4 +1,5 @@
 import { useState, createContext, Dispatch, SetStateAction } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom"; // Update import
 import "./App.css";
 import Header from "./components/Header";
 import Data from "./data.json";
@@ -42,16 +43,38 @@ function App() {
   const [planetClicked, setPlanetClicked] = useState<boolean | number>(false);
 
   return (
-    <>
+    <BrowserRouter>
       <MyContext.Provider value={{ data, setData }}>
         <Header
           planetClicked={planetClicked}
           setPlanetClicked={setPlanetClicked}
         />
-        {/* <PlanetList setPlanetClicked={setPlanetClicked} /> */}
-        <PlanetInfo />
+
+        <Routes>
+          {window.innerWidth < 768 ? (
+            <Route
+              path="/"
+              element={<PlanetList setPlanetClicked={setPlanetClicked} />}
+            />
+          ) : (
+            <Route path="/" element={<PlanetInfo filter="OVERVIEW" />} />
+          )}
+
+          <Route
+            path="/:planet/overview"
+            element={<PlanetInfo filter="OVERVIEW" />}
+          />
+          <Route
+            path="/:planet/structure"
+            element={<PlanetInfo filter="STRUCTURE" />}
+          />
+          <Route
+            path="/:planet/surface"
+            element={<PlanetInfo filter="SURFACE" />}
+          />
+        </Routes>
       </MyContext.Provider>
-    </>
+    </BrowserRouter>
   );
 }
 

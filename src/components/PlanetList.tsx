@@ -1,5 +1,6 @@
 import { MyContext } from "../App";
 import { useContext, Dispatch, SetStateAction } from "react";
+import { Link } from "react-router-dom";
 import PlanetName from "./PlanetName";
 
 interface IPlanetListProps {
@@ -13,13 +14,14 @@ export default function PlanetList({ setPlanetClicked }: IPlanetListProps) {
     <div className="flex flex-col mt-7">
       {data?.map((planet) => {
         return (
-          <PlanetName
-            key={planet.id}
-            planetId={planet.id}
-            planetImg={planet.images.planetImg}
-            planetText={planet.name}
-            setPlanetClicked={setPlanetClicked}
-          />
+          <Link to={`/${planet.name}/overview`} key={planet.id}>
+            <PlanetName
+              planetId={planet.id}
+              planetImg={planet.images.planetImg}
+              planetText={planet.name}
+              setPlanetClicked={setPlanetClicked}
+            />
+          </Link>
         );
       })}
     </div>
